@@ -78,7 +78,11 @@
     <ClInclude Include="client_handler.h" />
     <ClInclude Include="dark-cpp-msg.h" />
     <ClInclude Include="error_t.h" />
+    <ClInclude Include="message.h" />
+    <ClInclude Include="message_fragmentation.h" />
     <ClInclude Include="message_t.h" />
+    <ClInclude Include="message_writer.h" />
+    <ClInclude Include="message_writer_t.h" />
     <ClInclude Include="public.h" />
     <ClInclude Include="server.h" />
     <ClInclude Include="server_t.h" />
@@ -96,7 +100,11 @@
       </PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="error_t.cpp" />
+    <ClCompile Include="message.cpp" />
+    <ClCompile Include="message_fragmentation.cpp" />
     <ClCompile Include="message_t.cpp" />
+    <ClCompile Include="message_writer.cpp" />
+    <ClCompile Include="message_writer_t.cpp" />
     <ClCompile Include="server.cpp" />
     <ClCompile Include="server_t.cpp" />
     <ClCompile Include="stdafx.cpp">

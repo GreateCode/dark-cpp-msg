@@ -20,6 +20,8 @@
 #define DARKCPPMSG_API __declspec(dllimport)
 #endif
 
+#include <deque>
+
 #include <boost/unordered_map.hpp>
 #include <boost/typeof/typeof.hpp>
 
