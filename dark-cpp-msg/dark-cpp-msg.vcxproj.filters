@@ -13,6 +13,24 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="server">
+      <UniqueIdentifier>{9ffb0444-93c2-4918-b2b5-4b013b800d37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="client">
+      <UniqueIdentifier>{7f4441a6-910d-448a-8610-792c559f7aec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="message">
+      <UniqueIdentifier>{70ddd26b-a648-4cd9-9ce3-94f602f143bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="error">
+      <UniqueIdentifier>{f6a435dc-ca15-45d6-9acd-10ec58cd6e8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{b22b6daa-9705-4e39-a4cd-8ebb9346a055}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="pulic">
+      <UniqueIdentifier>{c41af5f6-6670-4cb3-b85a-721bda5b5586}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -24,19 +42,49 @@
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="server_t.h">
+      <Filter>server</Filter>
+    </ClInclude>
+    <ClInclude Include="message_t.h">
+      <Filter>message</Filter>
+    </ClInclude>
+    <ClInclude Include="error_t.h">
+      <Filter>error</Filter>
+    </ClInclude>
     <ClInclude Include="dark-cpp-msg.h">
-      <Filter>头文件</Filter>
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="public.h">
+      <Filter>pulic</Filter>
+    </ClInclude>
+    <ClInclude Include="server.h">
+      <Filter>server</Filter>
+    </ClInclude>
+    <ClInclude Include="client_handler.h">
+      <Filter>server</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="dark-cpp-msg.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="dllmain.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="message_t.cpp">
+      <Filter>message</Filter>
+    </ClCompile>
+    <ClCompile Include="error_t.cpp">
+      <Filter>error</Filter>
+    </ClCompile>
+    <ClCompile Include="server.cpp">
+      <Filter>server</Filter>
+    </ClCompile>
+    <ClCompile Include="server_t.cpp">
+      <Filter>server</Filter>
+    </ClCompile>
+    <ClCompile Include="client_handler.cpp">
+      <Filter>server</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

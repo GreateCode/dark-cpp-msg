@@ -14,3 +14,15 @@
 
 
 // TODO: 在此处引用程序需要的其他头文件
+#ifdef DARKCPPMSG_EXPORTS
+#define DARKCPPMSG_API __declspec(dllexport)
+#else
+#define DARKCPPMSG_API __declspec(dllimport)
+#endif
+
+#include <boost/unordered_map.hpp>
+#include <boost/typeof/typeof.hpp>
+
+#include <dark-cpp/net/tcp.hpp>
+
+#include "error_t.h"
