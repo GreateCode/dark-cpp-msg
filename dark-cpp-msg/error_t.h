@@ -1,5 +1,5 @@
 #pragma once
-class DARKCPPMSG_API error_t
+class error_t
 {
 public:
 	int value;

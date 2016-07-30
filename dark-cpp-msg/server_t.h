@@ -65,7 +65,7 @@ public:
 	void get_remote_port(SOCKET s,unsigned short& port,error_t& e);
 	void get_remote_address(SOCKET s,std::string& address,error_t& e);
 
-private:
+protected:
 	server* _server;
 };
 

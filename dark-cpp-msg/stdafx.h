@@ -24,6 +24,7 @@
 
 #include <boost/unordered_map.hpp>
 #include <boost/typeof/typeof.hpp>
+#include <boost/foreach.hpp>
 
 #include <dark-cpp/net/tcp.hpp>
 

@@ -34,6 +34,9 @@
     <Filter Include="message\write">
       <UniqueIdentifier>{e268af6e-befb-4eb8-9b40-a52ae1fbeef9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="message\fragmentation">
+      <UniqueIdentifier>{f4e0358f-cb96-4e87-a1cc-7d0949224316}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -66,9 +69,6 @@
     <ClInclude Include="client_handler.h">
       <Filter>server</Filter>
     </ClInclude>
-    <ClInclude Include="message_fragmentation.h">
-      <Filter>message</Filter>
-    </ClInclude>
     <ClInclude Include="message.h">
       <Filter>message</Filter>
     </ClInclude>
@@ -77,6 +77,15 @@
     </ClInclude>
     <ClInclude Include="message_writer.h">
       <Filter>message\write</Filter>
+    </ClInclude>
+    <ClInclude Include="message_fragmentation.h">
+      <Filter>message\fragmentation</Filter>
+    </ClInclude>
+    <ClInclude Include="message_fragmentation_t.h">
+      <Filter>message\fragmentation</Filter>
+    </ClInclude>
+    <ClInclude Include="fragmentation.h">
+      <Filter>message\fragmentation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -101,9 +110,6 @@
     <ClCompile Include="client_handler.cpp">
       <Filter>server</Filter>
     </ClCompile>
-    <ClCompile Include="message_fragmentation.cpp">
-      <Filter>message</Filter>
-    </ClCompile>
     <ClCompile Include="message.cpp">
       <Filter>message</Filter>
     </ClCompile>
@@ -112,6 +118,12 @@
     </ClCompile>
     <ClCompile Include="message_writer_t.cpp">
       <Filter>message\write</Filter>
+    </ClCompile>
+    <ClCompile Include="message_fragmentation.cpp">
+      <Filter>message\fragmentation</Filter>
+    </ClCompile>
+    <ClCompile Include="message_fragmentation_t.cpp">
+      <Filter>message\fragmentation</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
