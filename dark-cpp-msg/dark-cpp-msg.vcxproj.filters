@@ -37,6 +37,9 @@
     <Filter Include="message\fragmentation">
       <UniqueIdentifier>{f4e0358f-cb96-4e87-a1cc-7d0949224316}</UniqueIdentifier>
     </Filter>
+    <Filter Include="message\reader">
+      <UniqueIdentifier>{92c95cba-6a3c-4b66-8e34-24f9f221a144}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -87,6 +90,12 @@
     <ClInclude Include="fragmentation.h">
       <Filter>message\fragmentation</Filter>
     </ClInclude>
+    <ClInclude Include="message_reader.h">
+      <Filter>message\reader</Filter>
+    </ClInclude>
+    <ClInclude Include="message_reader_t.h">
+      <Filter>message\reader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -124,6 +133,12 @@
     </ClCompile>
     <ClCompile Include="message_fragmentation_t.cpp">
       <Filter>message\fragmentation</Filter>
+    </ClCompile>
+    <ClCompile Include="message_reader.cpp">
+      <Filter>message\reader</Filter>
+    </ClCompile>
+    <ClCompile Include="message_reader_t.cpp">
+      <Filter>message\reader</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

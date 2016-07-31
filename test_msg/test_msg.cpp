@@ -12,6 +12,9 @@ void test_write(datas_t& datas);
 int _tmain(int argc, _TCHAR* argv[])
 {
 	datas_t datas;
+	puts("*******	one	*****");
+	test_write(datas);
+	puts("*******	two	*****");
 	test_write(datas);
 
 	std::system("pause");
