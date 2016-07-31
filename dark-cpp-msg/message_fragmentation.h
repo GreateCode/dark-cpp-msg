@@ -12,4 +12,13 @@ public:
 	std::deque<char> _body;
 
 	void push(const char c);
+	std::size_t clone(char* out);
+
+	inline void set_size()
+	{
+		_header.size = _body.size();
+	}
+
+protected:
+	char get_c(std::size_t& pos);
 };

@@ -52,6 +52,7 @@ void message_writer::push_data(const char* data,std::size_t size)
 		//一個分片 填滿 加入消息流
 		if(_fragmentation->get_unpack()->_body.size() >= _size)
 		{
+			_fragmentation->get_unpack()->set_size();
 			_message->insert(_fragmentation);
 			_fragmentation.reset();
 		}
@@ -65,15 +66,16 @@ void message_writer::create_message(DWORD id,message_t* p_msg)
 	//將 未寫入消息的 數據 加入消息流
 	if(_fragmentation)
 	{
+		_fragmentation->get_unpack()->set_size();
 		_message->insert(_fragmentation);
 		_fragmentation.reset();
 	}
 	_message->id(id);
 	_message->count(_fragmentation_order);
 
-	message* ptr = p_msg->swap(_message);
-	if(ptr)
+	_message = p_msg->swap(_message);
+	if(_message)
 	{
-		delete ptr;
+		delete _message;
 	}
 }

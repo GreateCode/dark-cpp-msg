@@ -13,7 +13,10 @@ public:
 
 	//寫入數據流
 	void push(const char c);
-
+	
+	//將數據 copy 一個 副本 並將 轉義字符還原
+	//返回 副本 數據長度
+	std::size_t clone(char* out);
 
 	inline message_fragmentation* get_unpack()const
 	{

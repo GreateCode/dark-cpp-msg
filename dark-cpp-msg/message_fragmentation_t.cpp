@@ -5,8 +5,6 @@
 message_fragmentation_t::message_fragmentation_t(void)
 {
 	_fragmentation = new message_fragmentation();
-
-	_fragmentation = NULL;
 }
 
 
@@ -36,4 +34,9 @@ void message_fragmentation_t::release()
 void message_fragmentation_t::push(const char c)
 {
 	_fragmentation->push(c);
+}
+
+std::size_t message_fragmentation_t::clone(char* out)
+{
+	return _fragmentation->clone(out);
 }
