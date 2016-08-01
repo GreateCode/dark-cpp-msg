@@ -26,6 +26,6 @@
 #include <boost/typeof/typeof.hpp>
 #include <boost/foreach.hpp>
 
-#include <dark-cpp/net/tcp.hpp>
+#include "tcp/tcp.hpp"
 
 #include "error_t.h"

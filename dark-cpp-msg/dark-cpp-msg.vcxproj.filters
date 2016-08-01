@@ -40,6 +40,12 @@
     <Filter Include="message\reader">
       <UniqueIdentifier>{92c95cba-6a3c-4b66-8e34-24f9f221a144}</UniqueIdentifier>
     </Filter>
+    <Filter Include="tcp">
+      <UniqueIdentifier>{32cc3286-c007-4aa0-aa2e-03846035c6ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tcp\tcp">
+      <UniqueIdentifier>{e55e5f7d-d0be-4007-b4b9-8b1cd38bc81e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -96,6 +102,33 @@
     <ClInclude Include="message_reader_t.h">
       <Filter>message\reader</Filter>
     </ClInclude>
+    <ClInclude Include="client.h">
+      <Filter>client</Filter>
+    </ClInclude>
+    <ClInclude Include="client_t.h">
+      <Filter>client</Filter>
+    </ClInclude>
+    <ClInclude Include="tcp\net.hpp">
+      <Filter>tcp</Filter>
+    </ClInclude>
+    <ClInclude Include="tcp\tcp\base_client.hpp">
+      <Filter>tcp\tcp</Filter>
+    </ClInclude>
+    <ClInclude Include="tcp\tcp\base_server.hpp">
+      <Filter>tcp\tcp</Filter>
+    </ClInclude>
+    <ClInclude Include="tcp\tcp\client.hpp">
+      <Filter>tcp\tcp</Filter>
+    </ClInclude>
+    <ClInclude Include="tcp\tcp\server.hpp">
+      <Filter>tcp\tcp</Filter>
+    </ClInclude>
+    <ClInclude Include="tcp\tcp\tcp.hpp">
+      <Filter>tcp\tcp</Filter>
+    </ClInclude>
+    <ClInclude Include="tcp\tcp.hpp">
+      <Filter>tcp</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -139,6 +172,12 @@
     </ClCompile>
     <ClCompile Include="message_reader_t.cpp">
       <Filter>message\reader</Filter>
+    </ClCompile>
+    <ClCompile Include="client.cpp">
+      <Filter>client</Filter>
+    </ClCompile>
+    <ClCompile Include="client_t.cpp">
+      <Filter>client</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

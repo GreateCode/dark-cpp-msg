@@ -28,7 +28,7 @@ void server::accepted(const boost::system::error_code& e,tcp_socket_t s)
 
 void server::closed(tcp_socket_t s)
 {
-	if(_func_closed)
+	if(_func_closed && s->is_open())
 	{
 		_func_closed(s->native());
 	}
@@ -38,17 +38,46 @@ void server::closed(tcp_socket_t s)
 	{
 		_handlers.erase(find);
 	}
-
 }
 
 void server::readed(tcp_socket_t s,const char* data,std::size_t bytes)
 {
-
+	BOOST_AUTO(find,_handlers.find(s->native()));
+	if(find == _handlers.end())
+	{
+		return;
+	}
+	message_t msg;
+	if(find->second->_reader.get_message(data,bytes,&msg))
+	{
+		if(_func_readed)
+		{
+			_func_readed(s->native(),&msg);
+		}
+	}
 }
 
 void server::writed(const boost::system::error_code& e,tcp_socket_t s,const char* data,std::size_t bytes)
 {
-	
+	//數據傳輸 錯誤 斷開連接
+	if(e)
+	{
+		//關閉 回調
+		if(_func_closed && s->is_open())
+		{
+			_func_closed(s->native());
+		}
+
+		//刪除 客戶記錄
+		BOOST_AUTO(find,_handlers.find(s->native()));
+		if(find != _handlers.end())
+		{
+			_handlers.erase(find);
+		}
+
+		//關閉連接
+		s->close();
+	}
 }
 
 void server::get_remote_port(SOCKET s,unsigned short& port,error_t& e)
@@ -100,12 +129,12 @@ void server::write_message(SOCKET s,message_t& msg,error_t& e)
 				tmp.push_back(((char*)header)[i]);
 			}
 			
-			boost::shared_array<char> buf(new char[header->size]);
+			boost::scoped_array<char> buf(new char[header->size]);
 			std::size_t size = fragmentation->clone_binary(buf.get());
 			//寫入 body
 			for(std::size_t i=0;i<size;++i)
 			{
-				tmp.push_back(i);
+				tmp.push_back(buf[i]);
 			}
 		}while(msg.next());
 

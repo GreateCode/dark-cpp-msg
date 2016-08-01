@@ -7,6 +7,11 @@ public:
 	//size 為分片 大小 此值只 作為 參考 實際值 可能不一致
 	message_writer_t(std::size_t size);
 	~message_writer_t(void);
+	
+private:
+	message_writer_t(const message_writer_t& copy);
+	message_writer_t operator=(const message_writer_t& copy);
+public:
 
 	//壓入數據流
 	void push_data(const char* data,std::size_t size);

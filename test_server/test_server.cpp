@@ -8,8 +8,8 @@
 #define DARK_TEST_MSG_FRAGMENTATION_SIZE	1024
 
 void on_accept(server_t* server,SOCKET s);
-void on_cloe(server_t* server,SOCKET s);
-
+void on_close(server_t* server,SOCKET s);
+void on_recv(server_t* server,SOCKET s,message_t* p_msg);
 int _tmain(int argc, _TCHAR* argv[])
 {
 	server_t server;
@@ -25,13 +25,12 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	//設置 事件處理 回調
 	server.accepted(on_accept);
-	server.closed(on_cloe);
-	
+	server.closed(on_close);
+	server.readed(on_recv);
 
 	
 	server.run();
 
-	server.release();
 	return 0;
 }
 
@@ -46,17 +45,40 @@ void on_accept(server_t* server,SOCKET s)
 
 
 	//send first msg
-	message_writer_t writer(DARK_TEST_MSG_FRAGMENTATION_SIZE);
+	{
+		message_writer_t writer(DARK_TEST_MSG_FRAGMENTATION_SIZE);
 
-	std::string str = "welcome to cerberus server";
-	writer.push_data(str.data(),str.size());
+		std::string str = "welcome to cerberus server";
+		writer.push_data(str.data(),str.size());
 
-	message_t msg;
-	writer.create_message(server->new_id(),&msg);
+		message_t msg;
+		writer.create_message(server->new_id(),&msg);
 
-	server->write_message(s,msg,e);
+		server->write_message(s,msg,e);
+		if(e)
+		{
+			std::cout<<"write welcome emsg "<<s<<e.emsg<<"\n";
+		}
+	}
+	//msg 2
+	{
+		message_writer_t writer(DARK_TEST_MSG_FRAGMENTATION_SIZE);
+
+		std::string str = "cerberus it's an idea";
+		writer.push_data(str.data(),str.size());
+
+		message_t msg;
+		writer.create_message(server->new_id(),&msg);
+
+		server->write_message(s,msg,e);
+
+		if(e)
+		{
+			std::cout<<"write cerberus emsg "<<s<<e.emsg<<"\n";
+		}
+	}
 }
-void on_cloe(server_t* server,SOCKET s)
+void on_close(server_t* server,SOCKET s)
 {
 	std::string address;
 	unsigned short port = 0;
@@ -65,4 +87,44 @@ void on_cloe(server_t* server,SOCKET s)
 	server->get_remote_port(s,port,e);
 	std::cout<<"one out	"<<s<<"	("<<address<<":"<<port<<")"<<"\n";
 
+}
+void on_recv(server_t* server,SOCKET s,message_t* p_msg)
+{
+	std::string str;
+	if(p_msg->begin())
+	{
+
+		do
+		{
+			message_fragmentation_t* fragmentation = p_msg->get();
+			
+			PMESSAGE_FRAGMENTATION_HEADER header = fragmentation->get_header();
+			char* buf = new char[header->size];
+			{
+				std::size_t size = fragmentation->clone(buf);
+				str += std::string(buf,size);
+			}
+			delete buf;
+		}while(p_msg->next());
+	}
+	std::cout<<"recv ("<<s<<") : "<<str<<"\n";
+	
+	if(str == "i want join cerberus")
+	{
+		message_writer_t writer(DARK_TEST_MSG_FRAGMENTATION_SIZE);
+
+		std::string str = "you are cerberus soldier now";
+		writer.push_data(str.data(),str.size());
+
+		message_t msg;
+		writer.create_message(server->new_id(),&msg);
+
+		error_t e;
+		server->write_message(s,msg,e);
+
+		if(e)
+		{
+			std::cout<<"write soldier emsg "<<s<<e.emsg<<"\n";
+		}
+	}
 }

@@ -83,14 +83,20 @@ bool message_reader::get_message(message_t* p_msg)
 			if(_fragmentations.size() == header->count)
 			{
 				//刪除 已讀數據
+				++iter;
 				_datas.erase(_datas.begin(),iter);
 				//創建 消息 並返回
 				if(create_message(p_msg))
 				{
+					//清空 讀取記錄
+					reset();
 					return true;
 				}
 				else
 				{
+					//清空 讀取記錄
+					reset();
+
 					//消息 錯誤 重讀
 					return get_message(p_msg);
 				}
@@ -104,6 +110,12 @@ bool message_reader::get_message(message_t* p_msg)
 	//刪除 已讀數據
 	_datas.clear();
 	return false;
+}
+void message_reader::reset()
+{
+	_fragmentation.reset();
+	_fragmentation_header.reset();
+	_fragmentations.clear();
 }
 bool message_reader::create_message(message_t* p_msg)
 {
@@ -152,12 +164,14 @@ message_fragmentation_ptr_t message_reader::read_header()
 	iterator_t iter = _datas.begin();
 	for(int i=0;i<sizeof(MESSAGE_FRAGMENTATION_HEADER);++i)
 	{
+		/*
 		//出現新 頭標記 說明 數據錯誤 丟棄之
 		if(i && *iter == '^')
 		{
 			_datas.erase(_datas.begin(),iter);
 			return message_fragmentation_ptr_t();
 		}
+		*/
 
 		header[i] = *iter;
 		++iter;

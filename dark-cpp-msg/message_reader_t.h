@@ -7,6 +7,10 @@ public:
 	message_reader_t(void);
 	~message_reader_t(void);
 
+private:
+	message_reader_t(const message_reader_t& copy);
+	message_reader_t operator=(const message_reader_t& copy);
+public:
 
 	bool get_message(const char* data,std::size_t size,message_t* p_msg);
 protected:

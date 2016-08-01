@@ -31,7 +31,7 @@ protected:
 	bool get_message(message_t* p_msg);
 	bool create_message(message_t* p_msg);
 
-
+	void reset();
 	message_fragmentation_ptr_t read_header();
 };
 

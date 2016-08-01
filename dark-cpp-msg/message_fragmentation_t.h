@@ -6,7 +6,10 @@ class DARKCPPMSG_API message_fragmentation_t
 public:
 	message_fragmentation_t(void);
 	~message_fragmentation_t(void);
-
+private:
+	message_fragmentation_t(const message_fragmentation_t& copy);
+	message_fragmentation_t operator=(const message_fragmentation_t& copy);
+public:
 	PMESSAGE_FRAGMENTATION_HEADER get_header();
 	
 	
