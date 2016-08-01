@@ -13,7 +13,7 @@ public:
 
 	//創建 消息
 	//id 為消息 標識符
-	void create_message(DWORD id,message_t* p_msg);
+	void create_message(std::size_t id,message_t* p_msg);
 
 protected:
 	std::size_t _size;

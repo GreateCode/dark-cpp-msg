@@ -23,7 +23,7 @@ public:
 
 public:
 	//向指定連接 發送 消息
-	void write_message(SOCKET s,message_t msg,error_t& e);
+	void write_message(SOCKET s,message_t& msg,error_t& e);
 
 	//創建 服務器
 	void create(unsigned short port,std::size_t buf,error_t& e);
@@ -65,6 +65,13 @@ public:
 	void get_remote_port(SOCKET s,unsigned short& port,error_t& e);
 	void get_remote_address(SOCKET s,std::string& address,error_t& e);
 
+protected:
+	std::size_t _id;
+public:
+	inline std::size_t new_id()
+	{
+		return ++_id;
+	}
 protected:
 	server* _server;
 };

@@ -3,7 +3,7 @@
 #include "message.h"
 #include "message_fragmentation.h"
 
-#define DARK_MESSAGE_FRAGMENTATION_MIN	10
+#define DARK_MESSAGE_FRAGMENTATION_MIN	256
 #define DARK_MESSAGE_FRAGMENTATION_MAX	0xFFF0
 
 class message_writer
@@ -31,6 +31,6 @@ public:
 
 	//創建 消息
 	//id 為消息 標識符
-	void create_message(DWORD id,message_t* p_msg);
+	void create_message(std::size_t id,message_t* p_msg);
 };
 

@@ -2,6 +2,7 @@
 
 #include "public.h"
 #include "client_handler.h"
+#include "message_t.h"
 class server
 	:public dark::net::tcp_server
 {
@@ -51,5 +52,7 @@ protected:
 public:
 	void get_remote_port(SOCKET s,unsigned short& port,error_t& e);
 	void get_remote_address(SOCKET s,std::string& address,error_t& e);
+
+	void write_message(SOCKET s,message_t& msg,error_t& e);
 };
 

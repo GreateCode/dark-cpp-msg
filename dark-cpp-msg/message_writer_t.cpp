@@ -19,7 +19,7 @@ void message_writer_t::push_data(const char* data,std::size_t size)
 	_writer->push_data(data,size);
 }
 
-void message_writer_t::create_message(DWORD id,message_t* p_msg)
+void message_writer_t::create_message(std::size_t id,message_t* p_msg)
 {
 	_writer->create_message(id,p_msg);
 

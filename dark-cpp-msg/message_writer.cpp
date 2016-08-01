@@ -61,7 +61,7 @@ void message_writer::push_data(const char* data,std::size_t size)
 
 //創建 消息
 //id 為消息 標識符
-void message_writer::create_message(DWORD id,message_t* p_msg)
+void message_writer::create_message(std::size_t id,message_t* p_msg)
 {
 	//將 未寫入消息的 數據 加入消息流
 	if(_fragmentation)

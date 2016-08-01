@@ -10,6 +10,8 @@ server_t::server_t(void)
 	_func_writed = NULL;
 
 	_server = NULL;
+
+	_id = 0;
 }
 
 
@@ -18,7 +20,7 @@ server_t::~server_t(void)
 	release();
 }
 
-void server_t::write_message(SOCKET s,message_t msg,error_t& e)
+void server_t::write_message(SOCKET s,message_t& msg,error_t& e)
 {
 	
 }
