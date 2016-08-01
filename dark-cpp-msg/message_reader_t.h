@@ -1,7 +1,7 @@
 #pragma once
 class message_reader;
 #include "message_t.h"
-class message_reader_t
+class DARKCPPMSG_API message_reader_t
 {
 public:
 	message_reader_t(void);

@@ -40,3 +40,7 @@ std::size_t message_fragmentation_t::clone(char* out)
 {
 	return _fragmentation->clone(out);
 }
+std::size_t message_fragmentation_t::clone_binary(char* out)
+{
+	return _fragmentation->clone_binary(out);
+}

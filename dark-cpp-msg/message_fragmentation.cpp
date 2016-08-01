@@ -42,6 +42,16 @@ std::size_t message_fragmentation::clone(char* out)
 
 	return sum;
 }
+std::size_t message_fragmentation::clone_binary(char* out)
+{
+
+	for(std::size_t pos=0;pos<_body.size();++pos)
+	{
+		out[pos] = _body[pos];
+	}
+
+	return _body.size();
+}
 char message_fragmentation::get_c(std::size_t& pos)
 {
 	char c = _body[pos++];

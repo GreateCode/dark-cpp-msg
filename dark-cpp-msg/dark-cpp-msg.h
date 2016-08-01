@@ -7,4 +7,5 @@
 #include "fragmentation.h"
 #include "message_fragmentation_t.h"
 #include "message_writer_t.h"
+#include "message_reader_t.h"
 #include "server_t.h"

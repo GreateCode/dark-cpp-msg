@@ -12,7 +12,10 @@ public:
 	std::deque<char> _body;
 
 	void push(const char c);
+	//返回 body 數據 將 轉義字符 還原
 	std::size_t clone(char* out);
+	//返回 body 數據 不還原 轉義字符 
+	std::size_t clone_binary(char* out);
 
 	inline void set_size()
 	{
