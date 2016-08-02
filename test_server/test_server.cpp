@@ -133,6 +133,10 @@ void on_recv(server_t* server,SOCKET s,message_t* p_msg)
 			std::cout<<"write soldier emsg "<<s<<e.emsg<<"\n";
 		}
 	}
+	else if(str == "i kill you")
+	{
+		server->stop();
+	}
 }
 void on_send(server_t* server,SOCKET s,std::size_t id)
 {

@@ -66,6 +66,18 @@ void on_readed(client_t* client,message_t* p_msg)
 	if(str == "cerberus it's an idea")
 	{
 		error_t e;
+		/*{
+			message_writer_t writer(DARK_TEST_MSG_FRAGMENTATION_SIZE);
+
+			std::string str = "i kill you";
+			writer.push_data(str.data(),str.size());
+
+			message_t msg;
+			writer.create_message(client->new_id(),&msg);
+
+			client->write_message(msg,e);
+		}
+		return ;*/
 		{
 			message_writer_t writer(DARK_TEST_MSG_FRAGMENTATION_SIZE);
 
