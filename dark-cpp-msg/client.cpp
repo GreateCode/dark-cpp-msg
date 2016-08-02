@@ -46,6 +46,14 @@ void client::writed(const boost::system::error_code& e,const char* data,std::siz
 		//êPé]ßB½Ó
 		stop();
 	}
+	else
+	{
+		if(_func_writed && data[0] == '^')
+		{
+			PMESSAGE_FRAGMENTATION_HEADER header = (PMESSAGE_FRAGMENTATION_HEADER)data;
+			_func_writed(header->id);
+		}
+	}
 }
 void client::write_message(message_t& msg,error_t& e)
 {

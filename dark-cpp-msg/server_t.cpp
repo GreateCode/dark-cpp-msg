@@ -7,6 +7,7 @@ server_t::server_t(void)
 	_func_accepted = NULL;
 	_func_closed = NULL;
 	_func_readed = NULL;
+	_func_writed = NULL;
 
 	_server = NULL;
 
@@ -62,6 +63,7 @@ void server_t::release()
 		_func_accepted = NULL;
 		_func_closed = NULL;
 		_func_readed = NULL;
+		_func_writed = NULL;
 	}
 }
 void server_t::accepted(s_func_accepted_t func)
@@ -89,6 +91,14 @@ void server_t::readed(s_func_readed_t func)
 	}
 }
 
+void server_t::writed(s_func_writed_t func)
+{
+	if(_server)
+	{
+		_server->writed(boost::bind(func,this,_1,_2));
+	}
+}
+
 
 	
 	
@@ -108,10 +118,10 @@ server_t::s_func_readed_t server_t::readed()
 	return _func_readed;
 }
 	
-/*server_t::s_func_writed_t server_t::writed()
+server_t::s_func_writed_t server_t::writed()
 {
 	return _func_writed;
-}*/
+}
 void server_t::get_remote_port(SOCKET s,unsigned short& port,error_t& e)
 {
 	if(!_server)

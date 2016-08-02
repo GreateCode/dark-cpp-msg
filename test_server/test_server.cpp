@@ -3,13 +3,18 @@
 
 #include "stdafx.h"
 #include "../dark-cpp-msg/dark-cpp-msg.h"
+#ifndef _DEBUG
 #pragma comment(lib,"../debug/dark-cpp-msg.lib")
+#else
+#pragma comment(lib,"../release/dark-cpp-msg.lib")
+#endif
 
 #define DARK_TEST_MSG_FRAGMENTATION_SIZE	1024
 
 void on_accept(server_t* server,SOCKET s);
 void on_close(server_t* server,SOCKET s);
 void on_recv(server_t* server,SOCKET s,message_t* p_msg);
+void on_send(server_t* server,SOCKET s,std::size_t id);
 int _tmain(int argc, _TCHAR* argv[])
 {
 	server_t server;
@@ -27,7 +32,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	server.accepted(on_accept);
 	server.closed(on_close);
 	server.readed(on_recv);
-
+	server.writed(on_send);
 	
 	server.run();
 
@@ -127,4 +132,8 @@ void on_recv(server_t* server,SOCKET s,message_t* p_msg)
 			std::cout<<"write soldier emsg "<<s<<e.emsg<<"\n";
 		}
 	}
+}
+void on_send(server_t* server,SOCKET s,std::size_t id)
+{
+
 }

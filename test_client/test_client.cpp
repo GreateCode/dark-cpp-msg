@@ -10,6 +10,7 @@
 
 void on_closed(client_t* client);
 void on_readed(client_t* client,message_t* p_msg);
+void on_writed(client_t* client,std::size_t id);
 int _tmain(int argc, _TCHAR* argv[])
 {
 	//連接服務器
@@ -21,12 +22,14 @@ int _tmain(int argc, _TCHAR* argv[])
 	if(e)
 	{
 		std::cout<<e.value<<"("<<e.emsg<<")\n";
+		std::system("pause");
 		return 0;
 	}
 
 	//設置 事件處理 回調
 	client.closed(on_closed);
 	client.readed(on_readed);
+	client.writed(on_writed);
 
 	//運行 異步 服務
 	client.run();
@@ -91,4 +94,8 @@ void on_readed(client_t* client,message_t* p_msg)
 	{
 		client->stop();
 	}
+}
+void on_writed(client_t* client,std::size_t id)
+{
+
 }

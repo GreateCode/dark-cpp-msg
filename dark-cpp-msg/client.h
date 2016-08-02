@@ -18,9 +18,11 @@ protected:
 	//ÊÂ¼þ »ØÕ{
 	typedef boost::function<void()> b_func_closed_t;
 	typedef boost::function<void(message_t*)> b_func_readed_t;
+	typedef boost::function<void(std::size_t)> b_func_writed_t;
 	
 	b_func_closed_t _func_closed;
 	b_func_readed_t _func_readed;
+	b_func_writed_t _func_writed;
 
 	message_reader_t _reader;
 public:
@@ -31,6 +33,10 @@ public:
 	inline void readed(b_func_readed_t func)
 	{
 		_func_readed = func;
+	}
+	inline void writed(b_func_writed_t func)
+	{
+		_func_writed = func;
 	}
 	void write_message(message_t& msg,error_t& e);
 };

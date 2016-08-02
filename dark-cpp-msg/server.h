@@ -20,10 +20,12 @@ protected:
 	typedef boost::function<void(SOCKET)> b_func_accepted_t;
 	typedef b_func_accepted_t b_func_closed_t;
 	typedef boost::function<void(SOCKET,message_t*)> b_func_readed_t;
+	typedef boost::function<void(SOCKET,std::size_t)> b_func_writed_t;
 
 	b_func_accepted_t _func_accepted;
 	b_func_closed_t _func_closed;
 	b_func_readed_t _func_readed;
+	b_func_writed_t _func_writed;
 
 public:
 	inline void accepted(b_func_accepted_t func)
@@ -37,6 +39,10 @@ public:
 	inline void readed(b_func_readed_t func)
 	{
 		_func_readed = func;
+	}
+	inline void writed(b_func_writed_t func)
+	{
+		_func_writed = func;
 	}
 	
 

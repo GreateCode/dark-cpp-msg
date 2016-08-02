@@ -78,6 +78,18 @@ void server::writed(const boost::system::error_code& e,tcp_socket_t s,const char
 		//êPé]ßB½Ó
 		s->close();
 	}
+	else
+	{
+		if(_func_writed && data[0] == '^')
+		{
+			BOOST_AUTO(find,_handlers.find(s->native()));
+			if(find != _handlers.end())
+			{
+				PMESSAGE_FRAGMENTATION_HEADER header = (PMESSAGE_FRAGMENTATION_HEADER)data;
+				_func_writed(s->native(),header->id);
+			}
+		}
+	}
 }
 
 void server::get_remote_port(SOCKET s,unsigned short& port,error_t& e)
