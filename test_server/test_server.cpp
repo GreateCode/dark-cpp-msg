@@ -24,6 +24,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	if(e)
 	{
 		std::cout<<e.value<<"("<<e.emsg<<")\n";
+		std::system("pause");
 		return 0;
 	}
 	puts("listen at 1102");

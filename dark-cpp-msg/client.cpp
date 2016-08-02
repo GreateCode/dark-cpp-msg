@@ -2,8 +2,8 @@
 #include "client.h"
 
 using namespace dark::net;
-client::client(const std::string& server,unsigned short port,std::size_t buf,error_t& e)
-	:tcp_client(server,port,buf,e)
+client::client(const std::string& server,unsigned short port,std::size_t buf)
+	:tcp_client(server,port,buf)
 {
 }
 

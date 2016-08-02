@@ -20,10 +20,14 @@ client_t::~client_t(void)
 }
 void client_t::connect(const std::string& server,unsigned short port,std::size_t buf,error_t& e)
 {
-	_client = new client(server,port,buf,e);
-	if(e)
+	try
 	{
-		release();
+		_client = new client(server,port,buf);
+	}
+	catch(const boost::system::system_error& se)
+	{
+		e.value = DARK_ERROR_VALUE_SERVER_REJECT;
+		e.emsg = se.what();
 	}
 }
 void client_t::run()

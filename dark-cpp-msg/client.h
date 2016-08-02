@@ -6,7 +6,7 @@ class client
 	:public dark::net::tcp_client
 {
 public:
-	client(const std::string& server,unsigned short port,std::size_t buf,error_t& e);
+	client(const std::string& server,unsigned short port,std::size_t buf);
 	~client(void);
 
 protected:

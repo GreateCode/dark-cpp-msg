@@ -21,7 +21,7 @@ namespace dark
 			unsigned short port_;
 			std::size_t buffer_size_;
 		public:
-			tcp_base_client(std::string server,unsigned short port,std::size_t buffer_size,error_t& e)
+			tcp_base_client(std::string server,unsigned short port,std::size_t buffer_size)
 				:server_(server),port_(port)
 				,socket_(ios_)
 				,buffer_size_(buffer_size)
@@ -29,16 +29,8 @@ namespace dark
 				boost::asio::ip::address address = boost::asio::ip::address::from_string(server);
 				boost::asio::ip::tcp::endpoint endpoint(address,port);
 
-				try
-				{
-					socket_.connect(endpoint);
-				}
-				catch(const boost::system::system_error& ec)
-				{
-					e.value = DARK_ERROR_VALUE_SERVER_REJECT;
-					e.emsg = ec.what();
-					return;
-				}
+				socket_.connect(endpoint);
+				
 				
 				unsigned int count = boost::thread::hardware_concurrency() * 2  + 2;
 				for(unsigned int i = 0 ; i < count ; ++i)

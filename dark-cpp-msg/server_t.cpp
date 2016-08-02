@@ -31,15 +31,10 @@ void server_t::create(unsigned short port,std::size_t buf,error_t& e)
 	{
 		_server = new server(port,buf);
 	}
-	catch(const boost::system::error_code& se)
+	catch(const boost::system::system_error& se)
 	{
-		if(_server)
-		{
-			delete _server;
-			_server = NULL;
-		}
-		e.value = se.value();
-		e.emsg = se.message();
+		e.value = DARK_ERROR_VALUE_LISTEN_ERROR;
+		e.emsg = se.what();
 	}
 }
 void server_t::run()
