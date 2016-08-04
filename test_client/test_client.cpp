@@ -3,16 +3,21 @@
 
 #include "stdafx.h"
 
-#include "../dark-cpp-msg/dark-cpp-msg.h"
-#pragma comment(lib,"../debug/dark-cpp-msg.lib")
+#include "../dark-cpp-msg/dk/net/tcp.h"
+#ifdef _DEBUG
+#pragma comment(lib,"../debug/dark-cpp-msg-mdd.lib")
+#else
+#pragma comment(lib,"../release/dark-cpp-msg-md.lib")
+#endif
 
-#define DARK_TEST_MSG_FRAGMENTATION_SIZE	1024
+using namespace dk::net;
 
 void on_closed(client_t* client);
 void on_readed(client_t* client,message_t* p_msg);
 void on_writed(client_t* client,std::size_t id);
 int _tmain(int argc, _TCHAR* argv[])
 {
+	
 	//ßB½Ó·þ„ÕÆ÷
 	std::string server = "127.0.0.1";
 	unsigned short port = 1102;
@@ -44,30 +49,18 @@ void on_closed(client_t* client)
 }
 void on_readed(client_t* client,message_t* p_msg)
 {
-	std::string str;
-	if(p_msg->begin())
-	{
-
-		do
-		{
-			message_fragmentation_t* fragmentation = p_msg->get();
-			
-			PMESSAGE_FRAGMENTATION_HEADER header = fragmentation->get_header();
-			char* buf = new char[header->size];
-			{
-				std::size_t size = fragmentation->clone(buf);
-				str += std::string(buf,size);
-			}
-			delete buf;
-		}while(p_msg->next());
-	}
+	std::size_t size = 0;
+	const char* ptr = p_msg->get_body(&size);
+	std::string str(ptr,size);
+	
 	std::cout<<"recv : "<<str<<"\n";
 
 	if(str == "cerberus it's an idea")
 	{
 		error_t e;
-		/*{
-			message_writer_t writer(DARK_TEST_MSG_FRAGMENTATION_SIZE);
+		/*
+		{
+			writer_t writer;
 
 			std::string str = "i kill you";
 			writer.push_data(str.data(),str.size());
@@ -77,9 +70,9 @@ void on_readed(client_t* client,message_t* p_msg)
 
 			client->write_message(msg,e);
 		}
-		return ;*/
+		*/
 		{
-			message_writer_t writer(DARK_TEST_MSG_FRAGMENTATION_SIZE);
+			writer_t writer;
 
 			std::string str = "i'm a soldier";
 			writer.push_data(str.data(),str.size());
@@ -91,7 +84,7 @@ void on_readed(client_t* client,message_t* p_msg)
 		}
 
 		{
-			message_writer_t writer(DARK_TEST_MSG_FRAGMENTATION_SIZE);
+			writer_t writer;
 
 			std::string str = "i want join cerberus";
 			writer.push_data(str.data(),str.size());

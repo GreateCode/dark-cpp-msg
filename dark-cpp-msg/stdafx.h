@@ -14,18 +14,16 @@
 
 
 // TODO: 在此处引用程序需要的其他头文件
-#ifdef DARKCPPMSG_EXPORTS
 #define DARKCPPMSG_API __declspec(dllexport)
-#else
-#define DARKCPPMSG_API __declspec(dllimport)
-#endif
 
+#include <string>
 #include <deque>
 
+#include <boost/smart_ptr.hpp>
+#include <boost/foreach.hpp>
+#include <boost/function.hpp>
+#include <boost/bind.hpp>
 #include <boost/unordered_map.hpp>
 #include <boost/typeof/typeof.hpp>
-#include <boost/foreach.hpp>
 
-#include "tcp/tcp.hpp"
-
-#include "error_t.h"
+#include "dark/tcp.hpp"

@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{79E78261-583E-4119-87A7-13BD97C85226}</ProjectGuid>
+    <ProjectGuid>{9BEA230B-5906-4BA3-B9B7-72007F5DDE83}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>test_client</RootNamespace>
+    <RootNamespace>testfserver</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -75,15 +75,20 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="file_writer.h" />
+    <ClInclude Include="protocol.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="upload_file.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="file_writer.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="test_client.cpp" />
+    <ClCompile Include="test-fserver.cpp" />
+    <ClCompile Include="upload_file.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

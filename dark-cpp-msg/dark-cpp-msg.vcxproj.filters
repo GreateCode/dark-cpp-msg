@@ -13,38 +13,23 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="server">
-      <UniqueIdentifier>{9ffb0444-93c2-4918-b2b5-4b013b800d37}</UniqueIdentifier>
+    <Filter Include="dark">
+      <UniqueIdentifier>{0f39473e-9f77-48bb-8f18-2202c8c8a895}</UniqueIdentifier>
     </Filter>
-    <Filter Include="client">
-      <UniqueIdentifier>{7f4441a6-910d-448a-8610-792c559f7aec}</UniqueIdentifier>
+    <Filter Include="dark\tcp">
+      <UniqueIdentifier>{e30fdc62-8f8b-4120-ba15-36a5ba18cd46}</UniqueIdentifier>
     </Filter>
-    <Filter Include="message">
-      <UniqueIdentifier>{70ddd26b-a648-4cd9-9ce3-94f602f143bb}</UniqueIdentifier>
+    <Filter Include="dk">
+      <UniqueIdentifier>{f532fb2e-2fe7-4938-bba9-71a373cf7809}</UniqueIdentifier>
     </Filter>
-    <Filter Include="error">
-      <UniqueIdentifier>{f6a435dc-ca15-45d6-9acd-10ec58cd6e8c}</UniqueIdentifier>
+    <Filter Include="dk\client">
+      <UniqueIdentifier>{d70f33a6-8812-4491-adde-b0390fa34bd6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include">
-      <UniqueIdentifier>{b22b6daa-9705-4e39-a4cd-8ebb9346a055}</UniqueIdentifier>
+    <Filter Include="dk\server">
+      <UniqueIdentifier>{e53ed3d5-1d2b-48ce-9ce5-3ed6d7a891a8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="pulic">
-      <UniqueIdentifier>{c41af5f6-6670-4cb3-b85a-721bda5b5586}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="message\write">
-      <UniqueIdentifier>{e268af6e-befb-4eb8-9b40-a52ae1fbeef9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="message\fragmentation">
-      <UniqueIdentifier>{f4e0358f-cb96-4e87-a1cc-7d0949224316}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="message\reader">
-      <UniqueIdentifier>{92c95cba-6a3c-4b66-8e34-24f9f221a144}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="tcp">
-      <UniqueIdentifier>{32cc3286-c007-4aa0-aa2e-03846035c6ae}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="tcp\tcp">
-      <UniqueIdentifier>{e55e5f7d-d0be-4007-b4b9-8b1cd38bc81e}</UniqueIdentifier>
+    <Filter Include="dk\message">
+      <UniqueIdentifier>{972a543c-dd62-428d-9853-4e4f40f1d220}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -57,77 +42,68 @@
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="server_t.h">
-      <Filter>server</Filter>
+    <ClInclude Include="dark\net.hpp">
+      <Filter>dark</Filter>
     </ClInclude>
-    <ClInclude Include="message_t.h">
-      <Filter>message</Filter>
+    <ClInclude Include="dark\tcp.hpp">
+      <Filter>dark</Filter>
     </ClInclude>
-    <ClInclude Include="error_t.h">
-      <Filter>error</Filter>
+    <ClInclude Include="dark\tcp\base_client.hpp">
+      <Filter>dark\tcp</Filter>
     </ClInclude>
-    <ClInclude Include="dark-cpp-msg.h">
-      <Filter>include</Filter>
+    <ClInclude Include="dark\tcp\base_server.hpp">
+      <Filter>dark\tcp</Filter>
     </ClInclude>
-    <ClInclude Include="public.h">
-      <Filter>pulic</Filter>
+    <ClInclude Include="dark\tcp\client.hpp">
+      <Filter>dark\tcp</Filter>
     </ClInclude>
-    <ClInclude Include="server.h">
-      <Filter>server</Filter>
+    <ClInclude Include="dark\tcp\server.hpp">
+      <Filter>dark\tcp</Filter>
     </ClInclude>
-    <ClInclude Include="client_handler.h">
-      <Filter>server</Filter>
+    <ClInclude Include="dark\tcp\tcp.hpp">
+      <Filter>dark\tcp</Filter>
     </ClInclude>
-    <ClInclude Include="message.h">
-      <Filter>message</Filter>
+    <ClInclude Include="dk\net\error_t.h">
+      <Filter>dk</Filter>
     </ClInclude>
-    <ClInclude Include="message_writer_t.h">
-      <Filter>message\write</Filter>
+    <ClInclude Include="dk\net\public.h">
+      <Filter>dk</Filter>
     </ClInclude>
-    <ClInclude Include="message_writer.h">
-      <Filter>message\write</Filter>
+    <ClInclude Include="dk\net\tcp.h">
+      <Filter>dk</Filter>
     </ClInclude>
-    <ClInclude Include="message_fragmentation.h">
-      <Filter>message\fragmentation</Filter>
+    <ClInclude Include="dk\net\client.h">
+      <Filter>dk\client</Filter>
     </ClInclude>
-    <ClInclude Include="message_fragmentation_t.h">
-      <Filter>message\fragmentation</Filter>
+    <ClInclude Include="dk\net\client_t.h">
+      <Filter>dk\client</Filter>
     </ClInclude>
-    <ClInclude Include="fragmentation.h">
-      <Filter>message\fragmentation</Filter>
+    <ClInclude Include="dk\net\client_handler.h">
+      <Filter>dk\server</Filter>
     </ClInclude>
-    <ClInclude Include="message_reader.h">
-      <Filter>message\reader</Filter>
+    <ClInclude Include="dk\net\message_t.h">
+      <Filter>dk\message</Filter>
     </ClInclude>
-    <ClInclude Include="message_reader_t.h">
-      <Filter>message\reader</Filter>
+    <ClInclude Include="dk\net\message.h">
+      <Filter>dk\message</Filter>
     </ClInclude>
-    <ClInclude Include="client.h">
-      <Filter>client</Filter>
+    <ClInclude Include="dk\net\reader_t.h">
+      <Filter>dk\message</Filter>
     </ClInclude>
-    <ClInclude Include="client_t.h">
-      <Filter>client</Filter>
+    <ClInclude Include="dk\net\reader.h">
+      <Filter>dk\message</Filter>
     </ClInclude>
-    <ClInclude Include="tcp\net.hpp">
-      <Filter>tcp</Filter>
+    <ClInclude Include="dk\net\server_t.h">
+      <Filter>dk\server</Filter>
     </ClInclude>
-    <ClInclude Include="tcp\tcp\base_client.hpp">
-      <Filter>tcp\tcp</Filter>
+    <ClInclude Include="dk\net\server.h">
+      <Filter>dk\server</Filter>
     </ClInclude>
-    <ClInclude Include="tcp\tcp\base_server.hpp">
-      <Filter>tcp\tcp</Filter>
+    <ClInclude Include="dk\net\writer_t.h">
+      <Filter>dk\message</Filter>
     </ClInclude>
-    <ClInclude Include="tcp\tcp\client.hpp">
-      <Filter>tcp\tcp</Filter>
-    </ClInclude>
-    <ClInclude Include="tcp\tcp\server.hpp">
-      <Filter>tcp\tcp</Filter>
-    </ClInclude>
-    <ClInclude Include="tcp\tcp\tcp.hpp">
-      <Filter>tcp\tcp</Filter>
-    </ClInclude>
-    <ClInclude Include="tcp\tcp.hpp">
-      <Filter>tcp</Filter>
+    <ClInclude Include="dk\net\writer.h">
+      <Filter>dk\message</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -137,47 +113,41 @@
     <ClCompile Include="dllmain.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="message_t.cpp">
-      <Filter>message</Filter>
+    <ClCompile Include="dk\net\error_t.cpp">
+      <Filter>dk</Filter>
     </ClCompile>
-    <ClCompile Include="error_t.cpp">
-      <Filter>error</Filter>
+    <ClCompile Include="dk\net\client.cpp">
+      <Filter>dk\client</Filter>
     </ClCompile>
-    <ClCompile Include="server.cpp">
-      <Filter>server</Filter>
+    <ClCompile Include="dk\net\client_t.cpp">
+      <Filter>dk\client</Filter>
     </ClCompile>
-    <ClCompile Include="server_t.cpp">
-      <Filter>server</Filter>
+    <ClCompile Include="dk\net\client_handler.cpp">
+      <Filter>dk\server</Filter>
     </ClCompile>
-    <ClCompile Include="client_handler.cpp">
-      <Filter>server</Filter>
+    <ClCompile Include="dk\net\message.cpp">
+      <Filter>dk\message</Filter>
     </ClCompile>
-    <ClCompile Include="message.cpp">
-      <Filter>message</Filter>
+    <ClCompile Include="dk\net\message_t.cpp">
+      <Filter>dk\message</Filter>
     </ClCompile>
-    <ClCompile Include="message_writer.cpp">
-      <Filter>message\write</Filter>
+    <ClCompile Include="dk\net\reader.cpp">
+      <Filter>dk\message</Filter>
     </ClCompile>
-    <ClCompile Include="message_writer_t.cpp">
-      <Filter>message\write</Filter>
+    <ClCompile Include="dk\net\reader_t.cpp">
+      <Filter>dk\message</Filter>
     </ClCompile>
-    <ClCompile Include="message_fragmentation.cpp">
-      <Filter>message\fragmentation</Filter>
+    <ClCompile Include="dk\net\server.cpp">
+      <Filter>dk\server</Filter>
     </ClCompile>
-    <ClCompile Include="message_fragmentation_t.cpp">
-      <Filter>message\fragmentation</Filter>
+    <ClCompile Include="dk\net\server_t.cpp">
+      <Filter>dk\server</Filter>
     </ClCompile>
-    <ClCompile Include="message_reader.cpp">
-      <Filter>message\reader</Filter>
+    <ClCompile Include="dk\net\writer.cpp">
+      <Filter>dk\message</Filter>
     </ClCompile>
-    <ClCompile Include="message_reader_t.cpp">
-      <Filter>message\reader</Filter>
-    </ClCompile>
-    <ClCompile Include="client.cpp">
-      <Filter>client</Filter>
-    </ClCompile>
-    <ClCompile Include="client_t.cpp">
-      <Filter>client</Filter>
+    <ClCompile Include="dk\net\writer_t.cpp">
+      <Filter>dk\message</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

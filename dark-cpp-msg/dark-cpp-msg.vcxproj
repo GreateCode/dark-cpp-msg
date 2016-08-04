@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{FC38DADE-35BE-4DC7-9975-99E4B7DBE059}</ProjectGuid>
+    <ProjectGuid>{3CF21884-2185-461C-BD16-D2503F324B4B}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>darkcppmsg</RootNamespace>
   </PropertyGroup>
@@ -39,9 +39,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <TargetName>$(ProjectName)-mdd</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)-md</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -75,37 +77,43 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="client.h" />
-    <ClInclude Include="client_handler.h" />
-    <ClInclude Include="client_t.h" />
-    <ClInclude Include="dark-cpp-msg.h" />
-    <ClInclude Include="error_t.h" />
-    <ClInclude Include="fragmentation.h" />
-    <ClInclude Include="message.h" />
-    <ClInclude Include="message_fragmentation.h" />
-    <ClInclude Include="message_fragmentation_t.h" />
-    <ClInclude Include="message_reader.h" />
-    <ClInclude Include="message_reader_t.h" />
-    <ClInclude Include="message_t.h" />
-    <ClInclude Include="message_writer.h" />
-    <ClInclude Include="message_writer_t.h" />
-    <ClInclude Include="public.h" />
-    <ClInclude Include="server.h" />
-    <ClInclude Include="server_t.h" />
+    <ClInclude Include="dark\net.hpp" />
+    <ClInclude Include="dark\tcp.hpp" />
+    <ClInclude Include="dark\tcp\base_client.hpp" />
+    <ClInclude Include="dark\tcp\base_server.hpp" />
+    <ClInclude Include="dark\tcp\client.hpp" />
+    <ClInclude Include="dark\tcp\server.hpp" />
+    <ClInclude Include="dark\tcp\tcp.hpp" />
+    <ClInclude Include="dk\net\client.h" />
+    <ClInclude Include="dk\net\client_handler.h" />
+    <ClInclude Include="dk\net\client_t.h" />
+    <ClInclude Include="dk\net\error_t.h" />
+    <ClInclude Include="dk\net\message.h" />
+    <ClInclude Include="dk\net\message_t.h" />
+    <ClInclude Include="dk\net\public.h" />
+    <ClInclude Include="dk\net\reader.h" />
+    <ClInclude Include="dk\net\reader_t.h" />
+    <ClInclude Include="dk\net\server.h" />
+    <ClInclude Include="dk\net\server_t.h" />
+    <ClInclude Include="dk\net\tcp.h" />
+    <ClInclude Include="dk\net\writer.h" />
+    <ClInclude Include="dk\net\writer_t.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="tcp\net.hpp" />
-    <ClInclude Include="tcp\tcp.hpp" />
-    <ClInclude Include="tcp\tcp\base_client.hpp" />
-    <ClInclude Include="tcp\tcp\base_server.hpp" />
-    <ClInclude Include="tcp\tcp\client.hpp" />
-    <ClInclude Include="tcp\tcp\server.hpp" />
-    <ClInclude Include="tcp\tcp\tcp.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="client.cpp" />
-    <ClCompile Include="client_handler.cpp" />
-    <ClCompile Include="client_t.cpp" />
+    <ClCompile Include="dk\net\client.cpp" />
+    <ClCompile Include="dk\net\client_handler.cpp" />
+    <ClCompile Include="dk\net\client_t.cpp" />
+    <ClCompile Include="dk\net\error_t.cpp" />
+    <ClCompile Include="dk\net\message.cpp" />
+    <ClCompile Include="dk\net\message_t.cpp" />
+    <ClCompile Include="dk\net\reader.cpp" />
+    <ClCompile Include="dk\net\reader_t.cpp" />
+    <ClCompile Include="dk\net\server.cpp" />
+    <ClCompile Include="dk\net\server_t.cpp" />
+    <ClCompile Include="dk\net\writer.cpp" />
+    <ClCompile Include="dk\net\writer_t.cpp" />
     <ClCompile Include="dllmain.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -114,17 +122,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="error_t.cpp" />
-    <ClCompile Include="message.cpp" />
-    <ClCompile Include="message_fragmentation.cpp" />
-    <ClCompile Include="message_fragmentation_t.cpp" />
-    <ClCompile Include="message_reader.cpp" />
-    <ClCompile Include="message_reader_t.cpp" />
-    <ClCompile Include="message_t.cpp" />
-    <ClCompile Include="message_writer.cpp" />
-    <ClCompile Include="message_writer_t.cpp" />
-    <ClCompile Include="server.cpp" />
-    <ClCompile Include="server_t.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

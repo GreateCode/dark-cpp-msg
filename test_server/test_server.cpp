@@ -2,14 +2,14 @@
 //
 
 #include "stdafx.h"
-#include "../dark-cpp-msg/dark-cpp-msg.h"
-#ifndef _DEBUG
-#pragma comment(lib,"../debug/dark-cpp-msg.lib")
+#include "../dark-cpp-msg/dk/net/tcp.h"
+#ifdef _DEBUG
+#pragma comment(lib,"../debug/dark-cpp-msg-mdd.lib")
 #else
-#pragma comment(lib,"../release/dark-cpp-msg.lib")
+#pragma comment(lib,"../release/dark-cpp-msg-md.lib")
 #endif
 
-#define DARK_TEST_MSG_FRAGMENTATION_SIZE	1024
+using namespace dk::net;
 
 void on_accept(server_t* server,SOCKET s);
 void on_close(server_t* server,SOCKET s);
@@ -52,7 +52,7 @@ void on_accept(server_t* server,SOCKET s)
 
 	//send first msg
 	{
-		message_writer_t writer(DARK_TEST_MSG_FRAGMENTATION_SIZE);
+		writer_t writer;
 
 		std::string str = "welcome to cerberus server";
 		writer.push_data(str.data(),str.size());
@@ -68,7 +68,7 @@ void on_accept(server_t* server,SOCKET s)
 	}
 	//msg 2
 	{
-		message_writer_t writer(DARK_TEST_MSG_FRAGMENTATION_SIZE);
+		writer_t writer;
 
 		std::string str = "cerberus it's an idea";
 		writer.push_data(str.data(),str.size());
@@ -96,28 +96,15 @@ void on_close(server_t* server,SOCKET s)
 }
 void on_recv(server_t* server,SOCKET s,message_t* p_msg)
 {
-	std::string str;
-	if(p_msg->begin())
-	{
+	std::size_t size = 0;
+	const char* ptr = p_msg->get_body(&size);
+	std::string str(ptr,size);
 
-		do
-		{
-			message_fragmentation_t* fragmentation = p_msg->get();
-			
-			PMESSAGE_FRAGMENTATION_HEADER header = fragmentation->get_header();
-			char* buf = new char[header->size];
-			{
-				std::size_t size = fragmentation->clone(buf);
-				str += std::string(buf,size);
-			}
-			delete buf;
-		}while(p_msg->next());
-	}
 	std::cout<<"recv ("<<s<<") : "<<str<<"\n";
 	
 	if(str == "i want join cerberus")
 	{
-		message_writer_t writer(DARK_TEST_MSG_FRAGMENTATION_SIZE);
+		writer_t writer;
 
 		std::string str = "you are cerberus soldier now";
 		writer.push_data(str.data(),str.size());
