@@ -86,11 +86,31 @@ void server::readed(dark::net::tcp_socket_t s,const char* data,std::size_t bytes
 		return;
 	}
 	message_t msg;
-	if(find->second->_reader.get_message(data,bytes,&msg))
+
+	while(find->second->_reader.get_message(data,bytes,&msg))
 	{
+		if(data)
+		{
+			data = NULL;
+			bytes = 0;
+		}
+
 		if(_func_readed)
 		{
 			_func_readed(s->native(),&msg);
+		}
+
+		std::size_t size = 0;
+		const char* str = msg.get_body(&size);
+		if(size < DK_PROTOCOL_HASH_SIZE)
+		{
+			return;
+		}
+		std::string hash(str,DK_PROTOCOL_HASH_SIZE);
+		BOOST_AUTO(find_handler,find->second->_handlers.find(hash));
+		if(find_handler != find->second->_handlers.end())
+		{
+			find_handler->second->handler_message(s->native(),&msg);
 		}
 	}
 }
@@ -101,7 +121,7 @@ void server::writed(const boost::system::error_code& e,dark::net::tcp_socket_t s
 	if(e)
 	{
 		//êPé] »ØÕ{
-		if(_func_closed && s->is_open())
+		if(_func_closed)
 		{
 			_func_closed(s->native());
 		}
@@ -129,4 +149,13 @@ void server::writed(const boost::system::error_code& e,dark::net::tcp_socket_t s
 		}
 	}
 }
-	
+
+void server::register_protocol_handler(SOCKET s,protocol_handler_ptr_t handler)
+{
+	BOOST_AUTO(find,_handlers.find(s));
+	if(find == _handlers.end())
+	{
+		return;
+	}
+	find->second->_handlers[handler->get_hash()] = handler;
+}

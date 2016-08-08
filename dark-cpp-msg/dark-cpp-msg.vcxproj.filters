@@ -31,6 +31,9 @@
     <Filter Include="dk\message">
       <UniqueIdentifier>{972a543c-dd62-428d-9853-4e4f40f1d220}</UniqueIdentifier>
     </Filter>
+    <Filter Include="dk\protocol">
+      <UniqueIdentifier>{b3924390-9a0d-4091-af64-6991eefba114}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -105,6 +108,12 @@
     <ClInclude Include="dk\net\writer.h">
       <Filter>dk\message</Filter>
     </ClInclude>
+    <ClInclude Include="dk\net\protocol_writer_t.h">
+      <Filter>dk\protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="dk\net\protocol_handler_t.h">
+      <Filter>dk\protocol</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -148,6 +157,12 @@
     </ClCompile>
     <ClCompile Include="dk\net\writer_t.cpp">
       <Filter>dk\message</Filter>
+    </ClCompile>
+    <ClCompile Include="dk\net\protocol_writer_t.cpp">
+      <Filter>dk\protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="dk\net\protocol_handler_t.cpp">
+      <Filter>dk\protocol</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

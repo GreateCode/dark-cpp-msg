@@ -57,6 +57,9 @@ namespace dk
 			virtual void readed(dark::net::tcp_socket_t s,const char* data,std::size_t bytes);
 			virtual void writed(const boost::system::error_code& e,dark::net::tcp_socket_t s,const char* data,std::size_t bytes);
 	
+		public:
+			typedef boost::shared_ptr<protocol_handler_t> protocol_handler_ptr_t;
+			void register_protocol_handler(SOCKET s,protocol_handler_ptr_t handler);
 		};
 	};
 };

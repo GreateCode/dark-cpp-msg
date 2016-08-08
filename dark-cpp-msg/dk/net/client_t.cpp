@@ -88,3 +88,16 @@ void client_t::write_message(message_t& msg,error_t& e)
 {
 	return _client->write_message(msg,e);
 }
+void client_t::register_protocol_handler(protocol_handler_t* handler,D func)
+{
+	if(func)
+	{
+		boost::shared_ptr<protocol_handler_t> ptr(handler,func);
+		_client->register_protocol_handler(ptr);
+	}
+	else
+	{
+		boost::shared_ptr<protocol_handler_t> ptr(handler);
+		_client->register_protocol_handler(ptr);
+	}
+}

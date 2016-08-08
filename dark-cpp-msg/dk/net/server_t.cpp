@@ -140,3 +140,16 @@ void server_t::get_remote_address(SOCKET s,std::string& address,error_t& e)
 	}
 	_server->get_remote_address(s,address,e);
 }
+void server_t::register_protocol_handler(SOCKET s,protocol_handler_t* handler,D func)
+{
+	if(func)
+	{
+		boost::shared_ptr<protocol_handler_t> ptr(handler,func);
+		_server->register_protocol_handler(s,ptr);
+	}
+	else
+	{
+		boost::shared_ptr<protocol_handler_t> ptr(handler);
+		_server->register_protocol_handler(s,ptr);
+	}
+}

@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{3CF21884-2185-461C-BD16-D2503F324B4B}</ProjectGuid>
+    <ProjectGuid>{7181B2E7-C304-437A-87D6-4F15B1F49A67}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>darkcppmsg</RootNamespace>
+    <RootNamespace>file_handler</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -50,7 +50,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;DARKCPPMSG_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;FILE_HANDLER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -64,7 +64,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;DARKCPPMSG_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;FILE_HANDLER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -77,47 +77,16 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="dark\net.hpp" />
-    <ClInclude Include="dark\tcp.hpp" />
-    <ClInclude Include="dark\tcp\base_client.hpp" />
-    <ClInclude Include="dark\tcp\base_server.hpp" />
-    <ClInclude Include="dark\tcp\client.hpp" />
-    <ClInclude Include="dark\tcp\server.hpp" />
-    <ClInclude Include="dark\tcp\tcp.hpp" />
-    <ClInclude Include="dk\net\client.h" />
-    <ClInclude Include="dk\net\client_handler.h" />
-    <ClInclude Include="dk\net\client_t.h" />
-    <ClInclude Include="dk\net\error_t.h" />
-    <ClInclude Include="dk\net\message.h" />
-    <ClInclude Include="dk\net\message_t.h" />
-    <ClInclude Include="dk\net\protocol_handler_t.h" />
-    <ClInclude Include="dk\net\protocol_writer_t.h" />
-    <ClInclude Include="dk\net\public.h" />
-    <ClInclude Include="dk\net\reader.h" />
-    <ClInclude Include="dk\net\reader_t.h" />
-    <ClInclude Include="dk\net\server.h" />
-    <ClInclude Include="dk\net\server_t.h" />
-    <ClInclude Include="dk\net\tcp.h" />
-    <ClInclude Include="dk\net\writer.h" />
-    <ClInclude Include="dk\net\writer_t.h" />
+    <ClInclude Include="file.h" />
+    <ClInclude Include="file_handler.h" />
+    <ClInclude Include="file_handler_t.h" />
+    <ClInclude Include="file_writer_t.h" />
+    <ClInclude Include="handler.h" />
+    <ClInclude Include="header.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dk\net\client.cpp" />
-    <ClCompile Include="dk\net\client_handler.cpp" />
-    <ClCompile Include="dk\net\client_t.cpp" />
-    <ClCompile Include="dk\net\error_t.cpp" />
-    <ClCompile Include="dk\net\message.cpp" />
-    <ClCompile Include="dk\net\message_t.cpp" />
-    <ClCompile Include="dk\net\protocol_handler_t.cpp" />
-    <ClCompile Include="dk\net\protocol_writer_t.cpp" />
-    <ClCompile Include="dk\net\reader.cpp" />
-    <ClCompile Include="dk\net\reader_t.cpp" />
-    <ClCompile Include="dk\net\server.cpp" />
-    <ClCompile Include="dk\net\server_t.cpp" />
-    <ClCompile Include="dk\net\writer.cpp" />
-    <ClCompile Include="dk\net\writer_t.cpp" />
     <ClCompile Include="dllmain.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -126,6 +95,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="file.cpp" />
+    <ClCompile Include="file_handler.cpp" />
+    <ClCompile Include="file_handler_t.cpp" />
+    <ClCompile Include="file_writer_t.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

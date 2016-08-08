@@ -1,6 +1,7 @@
 #pragma once
 #include "public.h"
 #include "message_t.h"
+#include "protocol_handler_t.h"
 
 namespace dk
 {
@@ -87,6 +88,8 @@ namespace dk
 			{
 				return ++_id;
 			}
+			typedef void(*D)(protocol_handler_t* handler);
+			void register_protocol_handler(SOCKET s,protocol_handler_t* handler,D func = NULL);
 		};
 	};
 };

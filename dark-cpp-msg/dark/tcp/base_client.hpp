@@ -60,6 +60,10 @@ namespace dark
 					socket_.close();
 				}
 			}
+			inline bool is_open()
+			{
+				return socket_.is_open();
+			}
 		protected:
 			void post_read()
 			{

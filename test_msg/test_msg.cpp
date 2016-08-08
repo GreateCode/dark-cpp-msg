@@ -43,6 +43,12 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	strings_t strs;
 	dk::net::message_t msg1,msg2;
+	/**/
+	strs.clear();
+	strs.push_back("企鵝\n");
+	strs.push_back("企鵝都是神經病\n");
+	test_write(msg1,strs);
+	/**/
 
 	puts("****	writer one	****");
 	strs.clear();
@@ -272,6 +278,10 @@ void test_write(dk::net::message_t& msg,const strings_t& strs)
 	
 	auto header = msg.get_header();
 
+	std::ofstream outf("a.txt",std::ios::binary|std::ios::trunc|std::ios::out);
+	outf.write((char*)header,header->size + sizeof(dk::net::MESSAGE_HEADER));
+	outf.close();
+	
 	std::size_t size = 0;
 	const char* ptr = msg.get_body(&size);
 	std::cout<<std::string(ptr,size)<<"\n";

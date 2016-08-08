@@ -1,5 +1,6 @@
 #pragma once
 #include "reader_t.h"
+#include "protocol_handler_t.h"
 namespace dk
 {
 	namespace net
@@ -40,6 +41,12 @@ namespace dk
 				_func_writed = func;
 			}
 			void write_message(message_t& msg,error_t& e);
+
+		protected:
+			typedef boost::shared_ptr<protocol_handler_t> protocol_handler_ptr_t;
+			boost::unordered_map<std::string,protocol_handler_ptr_t> _handlers;
+		public:
+			void register_protocol_handler(protocol_handler_ptr_t handler);
 		};
 	};
 };

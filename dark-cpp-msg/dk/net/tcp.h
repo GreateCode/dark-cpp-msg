@@ -9,3 +9,5 @@
 #include "reader_t.h"
 #include "server_t.h"
 #include "client_t.h"
+#include "protocol_writer_t.h"
+#include "protocol_handler_t.h"

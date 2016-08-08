@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{3CF21884-2185-461C-BD16-D2503F324B4B}</ProjectGuid>
+    <ProjectGuid>{8601202D-725E-42D8-82CE-BAE15AF6C24A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>darkcppmsg</RootNamespace>
+    <RootNamespace>text_handler</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -50,7 +50,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;DARKCPPMSG_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;TEXT_HANDLER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -64,7 +64,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;DARKCPPMSG_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;TEXT_HANDLER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -77,47 +77,13 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="dark\net.hpp" />
-    <ClInclude Include="dark\tcp.hpp" />
-    <ClInclude Include="dark\tcp\base_client.hpp" />
-    <ClInclude Include="dark\tcp\base_server.hpp" />
-    <ClInclude Include="dark\tcp\client.hpp" />
-    <ClInclude Include="dark\tcp\server.hpp" />
-    <ClInclude Include="dark\tcp\tcp.hpp" />
-    <ClInclude Include="dk\net\client.h" />
-    <ClInclude Include="dk\net\client_handler.h" />
-    <ClInclude Include="dk\net\client_t.h" />
-    <ClInclude Include="dk\net\error_t.h" />
-    <ClInclude Include="dk\net\message.h" />
-    <ClInclude Include="dk\net\message_t.h" />
-    <ClInclude Include="dk\net\protocol_handler_t.h" />
-    <ClInclude Include="dk\net\protocol_writer_t.h" />
-    <ClInclude Include="dk\net\public.h" />
-    <ClInclude Include="dk\net\reader.h" />
-    <ClInclude Include="dk\net\reader_t.h" />
-    <ClInclude Include="dk\net\server.h" />
-    <ClInclude Include="dk\net\server_t.h" />
-    <ClInclude Include="dk\net\tcp.h" />
-    <ClInclude Include="dk\net\writer.h" />
-    <ClInclude Include="dk\net\writer_t.h" />
+    <ClInclude Include="handler.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="text_handler_t.h" />
+    <ClInclude Include="text_writer_t.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dk\net\client.cpp" />
-    <ClCompile Include="dk\net\client_handler.cpp" />
-    <ClCompile Include="dk\net\client_t.cpp" />
-    <ClCompile Include="dk\net\error_t.cpp" />
-    <ClCompile Include="dk\net\message.cpp" />
-    <ClCompile Include="dk\net\message_t.cpp" />
-    <ClCompile Include="dk\net\protocol_handler_t.cpp" />
-    <ClCompile Include="dk\net\protocol_writer_t.cpp" />
-    <ClCompile Include="dk\net\reader.cpp" />
-    <ClCompile Include="dk\net\reader_t.cpp" />
-    <ClCompile Include="dk\net\server.cpp" />
-    <ClCompile Include="dk\net\server_t.cpp" />
-    <ClCompile Include="dk\net\writer.cpp" />
-    <ClCompile Include="dk\net\writer_t.cpp" />
     <ClCompile Include="dllmain.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -130,6 +96,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="text_handler_t.cpp" />
+    <ClCompile Include="text_writer_t.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

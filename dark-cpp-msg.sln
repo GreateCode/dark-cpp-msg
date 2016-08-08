@@ -15,6 +15,14 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test-fserver", "test-fserve
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dark-cpp-msg", "dark-cpp-msg\dark-cpp-msg.vcxproj", "{3CF21884-2185-461C-BD16-D2503F324B4B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "text_handler", "text_handler\text_handler.vcxproj", "{8601202D-725E-42D8-82CE-BAE15AF6C24A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_handler_server", "test_handler_server\test_handler_server.vcxproj", "{4501BE57-E085-4AD9-AAD5-48378A95F834}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_handler_client", "test_handler_client\test_handler_client.vcxproj", "{395F76CD-2187-4614-9BE0-D5AB48359B5B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "file_handler", "file_handler\file_handler.vcxproj", "{7181B2E7-C304-437A-87D6-4F15B1F49A67}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -49,6 +57,22 @@ Global
 		{3CF21884-2185-461C-BD16-D2503F324B4B}.Debug|Win32.Build.0 = Debug|Win32
 		{3CF21884-2185-461C-BD16-D2503F324B4B}.Release|Win32.ActiveCfg = Release|Win32
 		{3CF21884-2185-461C-BD16-D2503F324B4B}.Release|Win32.Build.0 = Release|Win32
+		{8601202D-725E-42D8-82CE-BAE15AF6C24A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8601202D-725E-42D8-82CE-BAE15AF6C24A}.Debug|Win32.Build.0 = Debug|Win32
+		{8601202D-725E-42D8-82CE-BAE15AF6C24A}.Release|Win32.ActiveCfg = Release|Win32
+		{8601202D-725E-42D8-82CE-BAE15AF6C24A}.Release|Win32.Build.0 = Release|Win32
+		{4501BE57-E085-4AD9-AAD5-48378A95F834}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4501BE57-E085-4AD9-AAD5-48378A95F834}.Debug|Win32.Build.0 = Debug|Win32
+		{4501BE57-E085-4AD9-AAD5-48378A95F834}.Release|Win32.ActiveCfg = Release|Win32
+		{4501BE57-E085-4AD9-AAD5-48378A95F834}.Release|Win32.Build.0 = Release|Win32
+		{395F76CD-2187-4614-9BE0-D5AB48359B5B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{395F76CD-2187-4614-9BE0-D5AB48359B5B}.Debug|Win32.Build.0 = Debug|Win32
+		{395F76CD-2187-4614-9BE0-D5AB48359B5B}.Release|Win32.ActiveCfg = Release|Win32
+		{395F76CD-2187-4614-9BE0-D5AB48359B5B}.Release|Win32.Build.0 = Release|Win32
+		{7181B2E7-C304-437A-87D6-4F15B1F49A67}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7181B2E7-C304-437A-87D6-4F15B1F49A67}.Debug|Win32.Build.0 = Debug|Win32
+		{7181B2E7-C304-437A-87D6-4F15B1F49A67}.Release|Win32.ActiveCfg = Release|Win32
+		{7181B2E7-C304-437A-87D6-4F15B1F49A67}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
