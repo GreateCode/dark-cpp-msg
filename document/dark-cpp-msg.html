@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>dark-cpp-msg</title>
+	<link rel="stylesheet" type="text/css" href="css/css.css">
+</head>
+<body>
+
+<div class="main">
+	<div class="title">
+		<a href="#dark-cpp-msg">dark-cpp-msg</a>
+		<a href="#export">主要 導出類</a>
+	</div>
+
+	<div class="note"><a name="dark-cpp-msg"></a>
+		<p><span class="flag">dark-cpp-msg</span>
+<pre>dark-cpp-msg 是孤 使用boost::asio 實現的一個 帶消息邊界的 tcp 服務器/客戶端 
+
+官網 <a href="https://github.com/zuiwuchang/dark-cpp-msg" target="_blank">https://github.com/zuiwuchang/dark-cpp-msg</a>
+</pre>
+		</p>
+
+		<p><span class="flag">使用 方式</span>
+<pre><span class="care">server</span>
+1	實例化 server_t 服務器類
+2	調用 server_t::create 創建 服務器
+3	可選的 註冊 感興趣的 服務器 回調
+4	可選的 在 accepted 中 為客戶端 註冊 協議處理器
+5	調用 server_t::run 運行服務器
+
+<span class="care">client</span>
+1	實例化 client_t
+2	調用 client_t::connect 連接服務器
+3	可選的 註冊 感興趣的 客戶端 回調
+4	可選的 註冊 協議處理器
+5	調用 client_t::run 運行客戶端
+</pre>
+		</p>
+	</div>
+
+	<div class="note"><a name="export"></a>
+		<p><span class="flag">主要 導出類</span>
+<pre>error_t	包含錯誤碼 描述字符串
+
+server_t	定義了服務器 方法
+client_t	定義了客戶端 方法
+
+message_t	定義了一個 帶邊界的 消息
+		server_t/client_t 使用 write_message 發送一個消息給對方
+		... 在 readed 註冊的 回調中 接收對方 傳遞的 消息
+writer_t	定義了 創建 message_t 的 方法
+
+protocol_writer_t	定義了 一個協議接口 如何創建 此協議 消息
+protocol_handler_t	定義了 一個協議接口 如何處理 此協議 消息
+</pre>
+		</p>
+	</div>
+
+</div>
+</body>
+</html>

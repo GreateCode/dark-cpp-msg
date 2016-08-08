@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>dark-cpp-msg</title>
+	<link rel="stylesheet" type="text/css" href="css/css.css">
+</head>
+<body>
+
+<div class="main">
+	<div class="title">
+		<a href="#protocol">protocol</a>
+		<a href="#protocol_handler_t">protocol_handler_t</a>
+		<a href="#example">example</a>
+	</div>
+	<div class="note"><a name="protocol"></a>
+		<p><span class="flag">protocol</span>
+<pre>dark-cpp-msg 支持 為服務器 客戶端 註冊 協議處理器
+dark-cpp-msg 收到消息後 自動將 消息 路由到 協議處理器 進行 處理
+
+如果要 讓dark-cpp-msg路由協議 
+dark-cpp-msg 要求 message_t 的body的前 32字節 必須是 唯一的 md5值 用於 區分 多個 處理器
+</pre>
+		</p>
+	</div>
+
+	<div class="note"><a name="protocol_handler_t"></a>
+		<p><span class="flag">protocol_handler_t</span>
+<pre>protocol_handler_t 接口 定義了 協議處理器 的行為
+
+class protocol_handler_t
+{
+	//32 字節的 md5字符串 標識唯一的 處理器
+	virtual const std::string& get_hash()const = 0;
+	//處理 s 傳遞的 消息 (對於 client_t s始終為0)
+	virtual bool handler_message(SOCKET s,message_t* p_msg)=0;
+};
+</pre>
+		</p>
+		<p><span class="flag">protocol_writer_t</span>
+<pre>protocol_writer_t 接口 定義了 將 數據 轉化為 消息 的行為
+
+class protocol_writer_t
+{
+	//32 字節的 md5字符串 標識唯一的 處理器
+	virtual const std::string& get_hash() const= 0;
+	//返回值 true 獲取到一條消息 false 已經沒有消息(數據已全部轉化為消息)
+	//id 如果創建消息成功 消息將使用此值 作為 唯一標識
+	//p_msg 如果創建消息成功 將消息 返回到此指針
+	virtual bool get_message(std::size_t id,message_t* p_msg)=0;
+};
+</pre>
+		</p>
+	</div>
+	<div class="note"><a name="example"></a>
+		<p><span class="flag">example</span>
+<pre>text_handler 項目是一個 文本協議處理器 示例
+file_handler 項目是一個 文件傳輸協議處理器 示例
+test_handler_server 是一個使用了 協議處理器的 服務器 示例
+test_handler_client 是一個使用了 協議處理器的 客戶端 示例
+</pre>
+		</p>
+	</div>
+</div>
+</body>
+</html>

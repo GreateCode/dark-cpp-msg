@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>dark-cpp-msg</title>
+	<link rel="stylesheet" type="text/css" href="css/css.css">
+</head>
+<body>
+
+<div class="main">
+	<div class="title">
+		<a href="#message_t">message_t</a>
+		<a href="#writer_t">writer_t</a>
+		<a href="#server_t">server_t</a>
+		<a href="#client_t">client_t</a>
+		
+	</div>
+	<div class="note"><a name="message_t"></a>
+		<p><span class="flag">message_t</span>
+<pre>message_t 定義了服務器/客戶端 通信用的 消息
+</pre>
+		</p>
+		<p><span class="flag">public</span>
+<pre>//返回消息頭
+PMESSAGE_HEADER get_header()const;
+	<span class="care">
+	typedef struct _MESSAGE_HEADER_
+	{
+		//消息頭 標記 固定為 
+		//std::size_t flag;
+		char flag[4];
+
+		//消息 唯一標識符
+		std::size_t id;
+
+		//消息長度數量
+		std::size_t size;
+	}MESSAGE_HEADER,*PMESSAGE_HEADER;
+	</span>
+
+//返回消息 二進制數據 以及 二進制數據長度
+const char* get_body(std::size_t* size);
+</pre>
+		</p>
+	</div>
+
+	<div class="note"><a name="writer_t"></a>
+		<p><span class="flag">writer_t</span>
+<pre>writer_t 定義了 產生 message_t 的方法
+</pre>
+		</p>
+		<p><span class="flag">public</span>
+<pre>//壓入數據流
+void push_data(const char* data,std::size_t size);
+
+//創建 消息
+//id 為消息 標識符
+void create_message(std::size_t id,message_t* p_msg);
+</pre>
+		</p>
+		<p><span class="flag">example</span>
+<pre>見項目 test_msg
+</pre>
+		</p>
+	</div>
+
+	<div class="note"><a name="server_t"></a>
+		<p><span class="flag">server_t</span>
+<pre>server_t 定義了服務器 方法
+</pre>
+		</p>
+		<p><span class="flag">public</span>
+<pre>//創建 服務器
+void create(unsigned short port/*監聽端口*/,std::size_t buf/*收包緩存大小*/,error_t& e/*傳出參數 錯誤描述*/);
+
+//向指定連接 發送 消息
+void write_message(SOCKET s,message_t& msg,error_t& e);
+
+//返回 服務器是否 被創建
+inline operator bool() const
+
+//運行服務 直到 服務停止 後返回 
+//(必須已經create 否則 行為 未定義)
+void run();
+
+//停止服務 
+void stop();
+
+//設置/返回 socket 處理 回調函數
+//設置為 NULL(默認) 不處理相應事件
+void accepted(s_func_accepted_t func);
+void closed(s_func_closed_t func);
+void readed(s_func_readed_t func);
+void writed(s_func_writed_t func);
+
+s_func_accepted_t accepted();
+s_func_closed_t closed();
+s_func_readed_t readed();
+s_func_writed_t writed();
+	<span class="care">//客戶端 成功連接 回調
+	typedef void (*s_func_accepted_t)(server_t*,SOCKET);
+	//客戶端 掉線 回調
+	typedef void (*s_func_closed_t)(server_t*,SOCKET);
+	//接收到 客戶端 1條完整消息後 回調
+	typedef void (*s_func_readed_t)(server_t*,SOCKET,message_t*);
+
+	//發送 1條完整消息後 回調
+	typedef void (*s_func_writed_t)(server_t*,SOCKET,std::size_t);</span>
+
+
+//返回 socket 相關信息
+void get_remote_port(SOCKET s,unsigned short& port,error_t& e);
+void get_remote_address(SOCKET s,std::string& address,error_t& e);
+
+
+//返回一個 可用的 消息id
+inline std::size_t new_id()
+
+//為客戶端 註冊一個 協議處理器
+typedef void(*D)(protocol_handler_t* handler);
+void register_protocol_handler(SOCKET s,protocol_handler_t* handler,D func = NULL);
+</pre>
+		</p>
+
+		<p><span class="flag">example</span>
+<pre>見項目 test_server
+</pre>
+		</p>
+	</div>
+
+	<div class="note"><a name="client_t"></a>
+		<p><span class="flag">client_t</span>
+<pre>client_t 定義了客戶端 方法
+</pre>
+		</p>
+		<p><span class="flag">public</span>
+<pre>//連接服務器
+void connect(const std::string& server/*服務器 域名/ip*/,unsigned short port/*服務器端口*/,std::size_t buf/*接收數據緩存大小*/,error_t& e);
+
+//返回 是否連接服務器成功
+inline operator bool() const
+
+//向服務器 發送 消息
+void write_message(message_t& msg,error_t& e);
+
+//運行異步 socket 服務 直到 服務停止 後返回 
+//(必須已經connect成功 否則 行為 未定義)
+void run();
+
+//停止服務
+void stop();
+
+
+//設置/返回 socket 處理 回調函數
+//設置為 NULL(默認) 不處理相應事件
+void closed(s_func_closed_t func);
+void readed(s_func_readed_t func);
+void writed(s_func_writed_t func);
+
+s_func_closed_t closed();
+s_func_readed_t readed();
+s_func_writed_t writed();
+	<span class="care">//斷開服務器 回調
+	typedef void (*s_func_closed_t)(client_t*);
+
+	//接收到 客戶端 1條完整消息後 回調
+	typedef void (*s_func_readed_t)(client_t*,message_t*);
+
+	//發送 1條完整消息後 回調
+	typedef void (*s_func_writed_t)(client_t*,std::size_t);</span>
+
+
+//返回一個 可用的 消息id
+inline std::size_t new_id()
+{
+	return ++_id;
+}
+
+//註冊一個 協議處理器
+typedef void(*D)(protocol_handler_t* handler);
+void register_protocol_handler(protocol_handler_t* handler,D func = NULL);
+</pre>
+		</p>
+
+		<p><span class="flag">example</span>
+<pre>見項目 test_client
+</pre>
+		</p>
+	</div>
+
+</div>
+</body>
+</html>
