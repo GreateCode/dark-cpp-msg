@@ -104,7 +104,7 @@ void server::readed(dark::net::tcp_socket_t s,const char* data,std::size_t bytes
 		const char* str = msg.get_body(&size);
 		if(size < DK_PROTOCOL_HASH_SIZE)
 		{
-			return;
+			continue;
 		}
 		std::string hash(str,DK_PROTOCOL_HASH_SIZE);
 		BOOST_AUTO(find_handler,find->second->_handlers.find(hash));

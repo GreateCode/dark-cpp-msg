@@ -7,7 +7,7 @@
 int _tmain(int argc, _TCHAR* argv[])
 {
 	std::wstring path = L"test_client.exe";
-	for(int i=0;i<500;++i)
+	for(int i=0;i<700;++i)
 	{
 		ShellExecute(NULL,NULL,path.c_str(),NULL,NULL,SW_SHOW);
 		/*
